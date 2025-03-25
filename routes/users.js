@@ -1,14 +1,18 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 
-// Define variables
+// Initialize variables
 let ratio = 0.75;
 let acc = 1000;
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  acc = acc * ratio;  // Multiply acc by ratio
-  res.send(`Value is: ${acc.toFixed(2)}`); // Send the updated value with 2 decimal places
+// Define the /users endpoint
+router.get('/users', (req, res) => {
+    // Multiply acc by ratio and update acc
+    acc *= ratio;
+
+    // Send the updated value of acc as the response
+    res.send(`Value is: ${acc}`);
 });
 
 module.exports = router;
+
